@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Ajax Example in Struts 1e</title>
+<title>Struts with Ajax</title>
 <script src="/StrutsUsingAjax/js/jquery.js"></script>
 <script type="text/javascript">
-function doAjaxPost() {  
+$(document).ready(function(){
+$("#check").click(function() {  
 	    
 	  var name = $('#name').val();   
 	   
@@ -16,20 +17,20 @@ function doAjaxPost() {
 	    type: "POST",  
 	    url: "/StrutsUsingAjax/AjaxSubmit.do",  
 	    data: "name=" + name,  
-	    success: function(response){  
-	        
-	      $('#info').html(response);  
+	    success: function(resp){  
+	      $('#display').html(resp);  
 	    },  
-	    error: function(e){  
-	      alert('Error: ' + e);  
+	    error: function(err){  
+	      alert('Error: ' + err);  
 	    }  
 	  });  
-	}  
+	});
+});	
 </script>
 </head>
 <body>
-	Enter your name please : <input type="text" id="name"><br/>
-	<input type="button" value="Say Hello" onclick="doAjaxPost()"><br/>
-	<div id="info" style="color: green;"></div>
+	Name : <input type="text" name="name" id="name"><br/>
+	<input type="button" id="check" value="Say Hello" /><br/>
+	<div id="display" style="color: green;"></div>
 </body>
 </html>
