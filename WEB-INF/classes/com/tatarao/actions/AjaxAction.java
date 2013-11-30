@@ -19,11 +19,10 @@ public class AjaxAction extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		AjaxForm ajaxForm = (AjaxForm)form; 
-		response.setContentType("text/text;charset=utf-8");
 		response.setHeader("cache-control", "no-cache");
-		PrintWriter out = response.getWriter();
-		out.println("Hello " + ajaxForm.getName());
-		out.flush();
+		PrintWriter pw = response.getWriter();
+		pw.println("Hello " + ajaxForm.getName());
+		pw.flush();
 		return null;
 	}
 }
